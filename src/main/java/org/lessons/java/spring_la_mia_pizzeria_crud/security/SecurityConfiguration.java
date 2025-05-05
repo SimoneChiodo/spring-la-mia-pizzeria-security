@@ -28,7 +28,8 @@ public class SecurityConfiguration {
     )
     .formLogin(withDefaults -> {})
     .logout(withDefaults -> {})
-    .exceptionHandling(withDefaults -> {});
+    .exceptionHandling(withDefaults -> {})
+    .csrf(csrf -> csrf.disable());
 
     return http.build();
   }
