@@ -23,6 +23,7 @@
           <h1 class="me-2">Pizza Details</h1>
           <!-- Edit Button -->
           <a
+          sec:authorize="hasAuthority('ADMIN')"
           th:href="@{/pizza/edit/{id}(id=${pizza.id})}"
           class="btn btn-primary"
           >
@@ -89,7 +90,8 @@
                 <div class="col col-6"><b class="fs-5">Data fine:</b> [[*{dataFine}]]</div>
               </div>
               <!-- Pulsanti -->
-              <div>
+              <div 
+              sec:authorize="hasAuthority('ADMIN')">
                   <!-- Pulsante Modifica -->
                   <a th:href=@{/discount/edit/{id}(id=*{id})} class="btn btn-warning btn-sm m-1">
                     <i class="fa-solid fa-pencil"></i>
@@ -150,6 +152,7 @@
             
             <div class="w-100 text-center">
               <a
+              sec:authorize="hasAuthority('ADMIN')"
               th:href=@{/pizza/{id}/discount(id=${pizza.id})}
               class="btn btn-outline-success"
               >
@@ -164,7 +167,17 @@
             th:unless="${pizza.getSconti().size() > 0}"
           >
             <h2>Sconti:</h2>
-            <h2 class="text-center">Questa pizza non ha sconti!</h2>
+            <h2 class="text-center mb-4">Questa pizza non ha sconti!</h2>
+            
+            <div class="w-100 text-center">
+              <a
+              sec:authorize="hasAuthority('ADMIN')"
+              th:href=@{/pizza/{id}/discount(id=${pizza.id})}
+              class="btn btn-outline-success"
+              >
+                <h3>+ Crea un nuovo sconto</h3>
+              </a>
+            </div>
         </div>
 
         <div th:unless="${pizza != null}" class="mb-5">
