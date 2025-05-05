@@ -25,7 +25,7 @@ public class User {
   private String username;
 
   @NotBlank(message = "La password non può essere vuota")
-  private String passowrd;
+  private String password;
 
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(name = "user_role",
@@ -59,12 +59,12 @@ public class User {
     this.username = username;
   }
 
-  public String getPassowrd() {
-    return this.passowrd;
+  public String getPassword() {
+    return this.password;
   }
 
-  public void setPassowrd(String passowrd) {
-    this.passowrd = passowrd;
+  public void setPassword(String password) {
+    this.password = password;
   }
 
 }
