@@ -21,7 +21,7 @@ public class DatabaseUserDetailsService implements UserDetailsService{
     
     Optional<User> userAttempt = userRepository.findByUsername(username);
     if (userAttempt.isEmpty()) {
-      throw new UsernameNotFoundException("Unimplemented method 'loadUserByUsername'");
+      throw new UsernameNotFoundException("There is no user with this username: " + username);
     }
 
     return new DatabaseUserDetails(userAttempt.get());
